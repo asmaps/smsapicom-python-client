@@ -111,6 +111,17 @@ class SendAction(ApiSendAction, ApiAction):
 
         return self
 
+    def set_test(self, test=True):
+        if not test:
+            try:
+                del self._data['test']
+            except KeyError:
+                pass
+        else:
+            self._data['test'] = 1
+
+        return self
+
     def set_partner(self, partner):
         self._data['partner_id'] = partner
         return self
